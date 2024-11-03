@@ -1,4 +1,4 @@
-package com.sprint4.synthia;
+package com.fiap.synthia;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

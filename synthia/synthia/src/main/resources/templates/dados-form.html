@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar Dados da Empresa</title>
+</head>
+<body>
+    <h1>Cadastrar Dados da Empresa</h1>
+    <form th:action="@{/dados}" th:object="${dados}" method="post">
+        <div>
+            <label>Faturamento:</label>
+            <input type="text" th:field="*{faturamento}" required/>
+        </div>
+        <div>
+            <label>Fluxo de Vendas:</label>
+            <input type="text" th:field="*{fluxo_vendas}" required/>
+        </div>
+        <div>
+            <label>Clientes:</label>
+            <input type="text" th:field="*{clientes}" required/>
+        </div>
+        <div>
+            <label>Acessos à Plataforma:</label>
+            <input type="text" th:field="*{acessos_plataforma}" required/>
+        </div>
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/dados}">Ver todos os dados</a>
+</body>
+</html>

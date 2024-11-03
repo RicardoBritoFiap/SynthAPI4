@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Dados das Empresas</title>
+</head>
+<body>
+    <h1>Lista de Dados das Empresas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Faturamento</th>
+                <th>Fluxo de Vendas</th>
+                <th>Clientes</th>
+                <th>Acessos à Plataforma</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="dados : ${dadosList}">
+                <td th:text="${dados.faturamento}"></td>
+                <td th:text="${dados.fluxo_vendas}"></td>
+                <td th:text="${dados.clientes}"></td>
+                <td th:text="${dados.acessos_plataforma}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/dados/form}">Cadastrar Novos Dados</a>
+</body>
+</html>

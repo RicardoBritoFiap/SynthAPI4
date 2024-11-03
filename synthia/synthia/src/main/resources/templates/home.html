@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Bem-vindo(a), <span th:text="${username}"></span>!</h1>
+    <p>Escolha uma ação abaixo:</p>
+    <ul>
+        <li><a th:href="@{/dados/form}">Cadastrar Dados da Empresa</a></li>
+        <li><a th:href="@{/dados}">Visualizar Dados das Empresas</a></li>
+    </ul>
+    <a th:href="@{/logout}">Logout</a>
+</body>
+</html>
