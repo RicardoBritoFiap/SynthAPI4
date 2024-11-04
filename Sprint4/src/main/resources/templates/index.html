@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Página Inicial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #00796b;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 20px;
+            background-color: #00796b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao Sistema de Empresas</h1>
+    <a href="/login" class="button">Login</a>
+    <a href="/cadastro" class="button">Cadastro</a>
+</body>
+</html>
