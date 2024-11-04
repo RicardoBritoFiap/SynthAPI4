@@ -1,13 +1,9 @@
-package com.fiap.synthia.dadosempresa;
-
-import com.fiap.synthia.empresa.user.UserModel;
+package com.fiap.synthia.empresa.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -17,36 +13,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@Entity
 @Builder
-@Table(name = "DADOS")
+@Table(name = "USERS")
 @AllArgsConstructor
 @NoArgsConstructor
-public class DadosModel {
-    
+public class UserModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dados_seq_gen")
-    @SequenceGenerator(name = "dados_seq_gen", sequenceName = "dados_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq_gen")
+    @SequenceGenerator(name = "users_seq_gen", sequenceName = "users_seq", allocationSize = 1)
     private Long id;
 
     @NotBlank
     @Size(min = 1, max = 100)
-    private String faturamento;
+    private String username;
 
     @NotBlank
     @Size(min = 1, max = 100)
-    private String fluxo_vendas;
+    private String email;
+
+    @NotBlank
+    @Size(min = 1, max = 14)
+    private String cnpj;
 
     @NotBlank
     @Size(min = 1, max = 100)
-    private String clientes;
-
-    @NotBlank
-    @Size(min = 1, max = 100)
-    private String acessos_plataforma;
-
-    @ManyToOne
-    @JoinColumn(name = "users_id")
-    private UserModel usermodel;
+    private String password;
 }

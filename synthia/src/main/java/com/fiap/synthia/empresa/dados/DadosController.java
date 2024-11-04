@@ -1,4 +1,4 @@
-package com.fiap.synthia.dadosempresa;
+package com.fiap.synthia.empresa.dados;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,24 +35,22 @@ public class DadosController {
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         List<DadosModel> dadosList = dadosRepository.findByUserId(currentUser.getId());
         model.addAttribute("dadosList", dadosList);
-        return "dados-list"; 
+        return "dados-list";
     }
 
     @GetMapping("/form")
     public String showDadosForm(Model model) {
         model.addAttribute("dados", new DadosModel());
-        return "dados-form"; 
+        return "dados-form";
     }
 
     @PostMapping
     public String createDados(@ModelAttribute @Valid DadosModel dados, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "dados-form"; 
+            return "dados-form";
         }
         dadosRepository.save(dados);
-        return "redirect:/dados"; 
+        return "redirect:/dados";
     }
 
-    
 }
-

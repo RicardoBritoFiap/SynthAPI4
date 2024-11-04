@@ -1,4 +1,4 @@
-package com.fiap.synthia.dadosempresa;
+package com.fiap.synthia.empresa.dados;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
