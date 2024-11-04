@@ -1,24 +1,3 @@
-CREATE TABLE USERS if NOT EXISTS(
-    id NUMBER PRIMARY KEY,
-    username VARCHAR2(100) NOT NULL,
-    email VARCHAR2(100) NOT NULL UNIQUE,
-    cnpj VARCHAR2(14) NOT NULL UNIQUE,
-    password VARCHAR2(100) NOT NULL
-);
-
-
-CREATE TABLE DADOS if NOT EXISTS(
-    id NUMBER PRIMARY KEY,
-    faturamento VARCHAR2(100) NOT NULL,
-    fluxo_vendas VARCHAR2(100) NOT NULL,
-    clientes VARCHAR2(100) NOT NULL,
-    acessos_plataforma VARCHAR2(100) NOT NULL,
-    users_id NUMBER,
-    CONSTRAINT fk_users_dados FOREIGN KEY (users_id) REFERENCES USERS(id)
-);
-
-
-
 INSERT INTO users (username, email, cnpj, password) VALUES ('empresa1', 'empresa1@email.com', '12345678000101', 'senha123');
 INSERT INTO users (username, email, cnpj, password) VALUES ('empresa2', 'empresa2@email.com', '98765432000109', 'senha456');
 INSERT INTO users (username, email, cnpj, password) VALUES ('empresa3', 'empresa3@email.com', '56789012000155', 'senha789');

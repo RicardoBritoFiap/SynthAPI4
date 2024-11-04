@@ -1,7 +1,6 @@
 package com.fiap.synthia.empresa.token;
 
 import org.springframework.stereotype.Service;
-
 import com.fiap.synthia.empresa.user.UserModel;
 import com.fiap.synthia.empresa.user.UserRepository;
 
