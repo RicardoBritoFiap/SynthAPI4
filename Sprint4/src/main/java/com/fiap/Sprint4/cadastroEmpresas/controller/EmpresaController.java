@@ -2,6 +2,8 @@ package com.fiap.Sprint4.cadastroEmpresas.controller;
 
 import com.fiap.Sprint4.cadastroEmpresas.model.Empresa;
 import com.fiap.Sprint4.cadastroEmpresas.model.EmpresaDTO;
+import com.fiap.Sprint4.cadastroEmpresas.repository.EmpresaRepository;
+import com.fiap.Sprint4.cadastroEmpresas.service.EmailService;
 import com.fiap.Sprint4.cadastroEmpresas.service.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -48,10 +50,10 @@ public class EmpresaController {
         Empresa empresa = empresaService.buscarEmpresaLogada(); // Obter a empresa autenticada
         if (empresa != null) {
             empresa.setDescricao(descricao);
-            empresaService.salvar(empresa);  // Atualiza a descrição no banco
+            empresaService.salvar(empresa); // Atualiza a descrição no banco
             model.addAttribute("empresa", empresa);
         }
-        return "empresa-detalhes";  // Renderiza a página de detalhes com a descrição atualizada
+        return "empresa-detalhes"; // Renderiza a página de detalhes com a descrição atualizada
     }
 
     // Excluir empresa por ID
@@ -62,5 +64,24 @@ public class EmpresaController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+    @PostMapping("/empresas")
+    public ResponseEntity<Empresa> cadastrarEmpresa(@RequestBody Empresa empresa) {
+        // Código para salvar a empresa no banco de dados
+        empresaRepository.save(empresa);
+
+        // Enviar e-mail de confirmação
+        String assunto = "Confirmação de Cadastro";
+        String mensagem = "Olá " + empresa.getNome() + ", seu cadastro foi realizado com sucesso!";
+        emailService.enviarEmail(empresa.getEmail(), assunto, mensagem);
+
+        return ResponseEntity.ok(empresa);
     }
 }
