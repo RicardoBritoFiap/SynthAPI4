@@ -6,6 +6,7 @@ import com.fiap.Sprint4.cadastroEmpresas.repository.EmpresaRepository;
 import com.fiap.Sprint4.cadastroEmpresas.service.EmailService;
 import com.fiap.Sprint4.cadastroEmpresas.service.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -72,8 +73,19 @@ public class EmpresaController {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    @PostMapping("/empresas")
-    public ResponseEntity<Empresa> cadastrarEmpresa(@RequestBody Empresa empresa) {
+    @PostMapping(value = "/empresas", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseEntity<Empresa> cadastrarEmpresa(
+            @RequestParam String nome,
+            @RequestParam String email,
+            @RequestParam String descricao,
+            @RequestParam String senha) {
+
+        Empresa empresa = new Empresa();
+        empresa.setNome(nome);
+        empresa.setEmail(email);
+        empresa.setDescricao(descricao);
+        empresa.setSenha(senha);
+
         // Código para salvar a empresa no banco de dados
         empresaRepository.save(empresa);
 
