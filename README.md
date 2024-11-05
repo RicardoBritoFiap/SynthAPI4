@@ -25,4 +25,4 @@ http://localhost:8080/swagger-ui/index.html#/
 <img src="./diagramas/diagrama de classes.png">
 <img src="./diagramas/diagrama modelo logico.png">
 
-## [🎬Link do vídeo]() ##
+## [🎬Link do vídeo](https://youtu.be/IEv0AwyAQ24) ##
