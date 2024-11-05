@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalhes da Empresa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .details {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="details">
+        <h1 th:text="'Bem-vindo, ' + ${empresa.nome}"></h1>
+        <p><strong>Descrição:</strong> <span th:text="${empresa.descricao}"></span></p>
+
+        <!-- Formulário para exibir e atualizar a descrição -->
+        <form th:action="@{/api/empresas/atualizar-descricao}" method="post">
+            <label for="descricao">Nova Descrição:</label>
+            <textarea id="descricao" name="descricao" th:text="${empresa.descricao}"></textarea>
+            <button type="submit" class="button">Atualizar Descrição</button>
+        </form>
+    </div>
+</body>
+</html>
